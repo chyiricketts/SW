@@ -10,15 +10,15 @@ import matplotlib.pyplot as plt
 #import plotly.graph_objects as go
 #import plotly.express as px
 #import chart_studio.tools as tls
-#from utils import masks_to_png, encode_image, extract_masks
+from utils import masks_to_png, encode_image, extract_masks
 
-flask_app = Flask(__name__)
+app = Flask(__name__)
 
 # Initial loading of index.html
-@flask_app.route('/')
+@app.route('/')
 def index():
     return render_template('index.html', image_url=None)
 
 
 if __name__ == '__main__':
-    flask_app.run(debug=True)
+    app.run(debug=True)
