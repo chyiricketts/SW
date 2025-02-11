@@ -18,7 +18,8 @@ app = Flask(__name__)
 # Initial loading of index.html
 @app.route('/')
 def index():
-    return render_template('index.html', image_url=None)
+    #return render_template('index.html', image_url=None)
+    return render_template('main.html', image_url=None)
 
 
 if __name__ == '__main__':
