@@ -1,4 +1,5 @@
-from flask import Flask, request, render_template, redirect, url_for
+#from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, render_template
 import numpy as np
 import os
 import matplotlib.pyplot as plt
@@ -10,7 +11,7 @@ import matplotlib.pyplot as plt
 #import plotly.graph_objects as go
 #import plotly.express as px
 #import chart_studio.tools as tls
-from utils import masks_to_png, encode_image, extract_masks
+#from utils import masks_to_png, encode_image, extract_masks
 
 app = Flask(__name__)
 
