@@ -2,15 +2,14 @@ from flask import Flask, request, render_template, redirect, url_for
 import numpy as np
 import os
 import matplotlib.pyplot as plt
-from cellpose import models, io
-import glob
-from dash import Dash, dcc, html
-from PIL import Image
-import base64
-from io import BytesIO
-import plotly.graph_objects as go
-import plotly.express as px
-import chart_studio.tools as tls
+#import glob
+#from dash import Dash, dcc, html
+#from PIL import Image
+#import base64
+#from io import BytesIO
+#import plotly.graph_objects as go
+#import plotly.express as px
+#import chart_studio.tools as tls
 
 
 
