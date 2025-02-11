@@ -10,10 +10,7 @@ import matplotlib.pyplot as plt
 #import plotly.graph_objects as go
 #import plotly.express as px
 #import chart_studio.tools as tls
-
-
-
-from utils import masks_to_png, encode_image, extract_masks
+#from utils import masks_to_png, encode_image, extract_masks
 
 flask_app = Flask(__name__)
 
