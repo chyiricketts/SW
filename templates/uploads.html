@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Data Vizualization Main Page</title>
+        <title>Data Vizualization</title>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="../static/css/main_style.css"> 
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="../static/css/uploads_style.css"> 
+        
+        
     </head>
 
     <body>
@@ -13,7 +16,7 @@
             </div>
 
             <div>
-                <h2>Chyi Ricketts</h2>
+                <h2>Uploads Page</h2>
             </div>
         </div>
 
@@ -24,13 +27,23 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto omnis deleniti exercitationem aperiam incidunt mollitia laboriosam maxime inventore repudiandae eum non eos, optio, excepturi quo praesentium harum quibusdam nesciunt nemo!</p>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio amet earum voluptatum nobis voluptas itaque, tenetur aliquid! Debitis consequatur, consequuntur earum aut hic tenetur facilis velit, tempora dicta et fugit?</p>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Placeat asperiores, a perferendis rem ducimus maiores non nostrum soluta. Ipsam minima qui consequuntur omnis delectus quisquam error eaque illum voluptate optio!</p>
-            <p>Click here to see my </p>
-            <a href="..\static\sw\SW Final Layout.pdf" target = "_blank">sw paper</a>
         </div>
 
-        <div class = "button-container">
-            <button onclick="window.location.href='uploads.html';">Go to New Page</button>
+        <br><br><br><br>
+
+        <div class = "title-container">
+            <h2>Get Started!</h2>
         </div>
-        
+
+        <div id = "upload">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="npyfile">Choose NPY File</label>
+                <input type="file" name="npyfile" id="npyfile" accept=".npy" required>
+                <label for="bmpfile">Choose BMP File</label>
+                <input type="file" name="bmpfile" id="bmpfile" accept=".bmp" required>
+                <br><br>
+                <button type="submit">Upload</button>
+            </form>    
+        </div>
     </body>
 </html>
