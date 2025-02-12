@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Data Vizualization Main Page</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="../static/css/configure_style.css"> 
+    </head>
+
+    <body>
+        <div class = "title">
+            <h1>Data Vizualization Main Page</h1>
+        </div>
+        <div id = "info">
+            <p>Files Successfully Uploaded</p>
+        </div>
+
+        <br><br><br><br>
+
+        <div class = "title">
+            <h2>Segmented Masks:</h2>
+        </div>
+        
+        <div class="scroll-container">
+            {% for image in images %}
+            <div class = "image-item">
+                <img src = "{{ url_for('static', filename=image.filename) }}" alt="Masks Preview">
+                <p>Main File: {{ image.stem_file }}</p>
+                <p>Mask Number: {{ image.mask_num }}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class = "title">
+            <h2>Variable Selection</h2>
+        </div>
+
+        <div id = "variable-table">
+            <p>Choose which variables to process</p>
+            <p>Additional variables may increase the processing time</p>
+            <br>
+            <form action="/variable_select" method="post">
+                <label for = "x-location">
+                    <input type = "checkbox" id="x-location" name="preferences" value = "x-location">
+                    X-location
+                </label>
+                <br>
+                <label for = "y-location">
+                    <input type = "checkbox" id="y-location" name="preferences" value = "y-location">
+                    Y-location
+                </label>
+                <br>
+                <label for = "total-pixels">
+                    <input type = "checkbox" id="total-pixels" name="preferences" value = "total-pixels">
+                    Total Pixels
+                </label>
+                <br>
+                <label for = "diameter">
+                    <input type = "checkbox" id="diameter" name="preferences" value = "diameter">
+                    Diameter
+                </label>
+                <br>
+                <label for = "intensity">
+                    <input type = "checkbox" id="intensity" name="preferences" value = "intensity">
+                    Intensity
+                </label>
+                <br>
+                <label for = "nucleus-comp">
+                    <input type = "checkbox" id="nucleus-comp" name="preferences" value = "nucleus-comp">
+                    Nucleus Comparison
+                </label>
+                <br><br>
+                <button type="submit">Submit</button>
+                <br><br><br>
+
+            </form>
+        </div>
+        
+    </body>
+</html>

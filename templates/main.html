@@ -29,7 +29,10 @@
         </div>
 
         <div class = "button-container">
-            <button onclick="window.location.href='uploads.html';">Go to New Page</button>
+            <a href="{{ url_for('open_uploads') }}">
+                <button>Continue to Uploads</button>
+            </a>
+            
         </div>
         
     </body>
