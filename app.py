@@ -23,6 +23,13 @@ UPLOAD_FOLDER = "static/uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Create the folder if it doesn't exist
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
+
+#Clearing all files, called at the beginning of the script
+def clear_uploads():
+    files = glob.glob(os.path.join('UPLOAD_FOLDER', "*"))
+    for f in files: 
+        os.remove(f)
+
 clear_uploads()
 
 # Initial loading of index.html
@@ -91,13 +98,6 @@ def restart():
     for f in files: 
         os.remove(f)
     return render_template('main.html')
-
-#Clearing all files, called at the beginning of the script
-def clear_uploads():
-    files = glob.glob(os.path.join('UPLOAD_FOLDER', "*"))
-    for f in files: 
-        os.remove(f)
-
 
 if __name__ == '__main__':
     app.run(debug=True)
