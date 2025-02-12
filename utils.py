@@ -14,8 +14,8 @@ def masks_to_png(bmp_file, npy_file, save_path, crop_size = 150):
     img = iio.imread(bmp_file)  # Reads BMP into a NumPy array
 
     # Convert BMP image to grayscale if it's RGB
-    if img.ndim == 3 and img.shape[2] == 3:
-        img = np.mean(img, axis=2).astype(np.uint8)  # Convert to grayscale
+    #if img.ndim == 3 and img.shape[2] == 3:
+    #    img = np.mean(img, axis=2).astype(np.uint8)  # Convert to grayscale
 
     # Get unique cell labels (excluding background, usually 0)
     cell_labels = np.unique(masks)

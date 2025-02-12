@@ -4,6 +4,7 @@ import numpy as np
 import os
 import matplotlib.pyplot as plt
 from utils import masks_to_png
+import glob
 
 #import glob
 #from dash import Dash, dcc, html
@@ -18,8 +19,11 @@ from utils import masks_to_png
 app = Flask(__name__)
 
 #Configuration
-app.config['UPLOAD_FOLDER'] = 'uploads'
+UPLOAD_FOLDER = "static/uploads"
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Create the folder if it doesn't exist
+app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
+clear_uploads()
 
 # Initial loading of index.html
 @app.route('/')
@@ -56,8 +60,14 @@ def upload_files():
     npyfile = request.files['npyfile']
     bmpfile = request.files['bmpfile']
 
-    npyfilepath = os.path.join(app.config['UPLOAD_FOLDER'], npyfile.filename)
-    bmpfilepath = os.path.join(app.config['UPLOAD_FOLDER'], bmpfile.filename)
+    #npyfilepath = os.path.join(app.config['UPLOAD_FOLDER'], npyfile.filename)
+    #bmpfilepath = os.path.join(app.config['UPLOAD_FOLDER'], bmpfile.filename)
+    npyfilepath = os.path.abspath(os.path.join(app.config["UPLOAD_FOLDER"], npyfile.filename))
+    bmpfilepath = os.path.abspath(os.path.join(app.config["UPLOAD_FOLDER"], bmpfile.filename))
+
+    print(f"Saving npy file to: {npyfilepath}")
+    print(f"Saving bmp file to: {bmpfilepath}")
+
 
     try:
         npyfile.save(npyfilepath)
@@ -66,12 +76,27 @@ def upload_files():
     except Exception as e:
         return str(e), 500
     
-    save_path = r'C:\Users\Chyi\Documents\Siggy Work\Website\static\scroll'
+    save_path = r'C:\Users\Chyi\OneDrive\Documents\SW_Website\static\scroll'
 
     # IMAGES contains png filename, stem_file, and mask_num
     images = masks_to_png(bmpfilepath, npyfilepath, save_path)
 
     return render_template('configure.html', images=images)
+
+
+#Clearing all added files and starting over
+@app.route('/restart')
+def restart():
+    files = glob.glob(os.path.join('UPLOAD_FOLDER', "*"))
+    for f in files: 
+        os.remove(f)
+    return render_template('main.html')
+
+#Clearing all files, called at the beginning of the script
+def clear_uploads():
+    files = glob.glob(os.path.join('UPLOAD_FOLDER', "*"))
+    for f in files: 
+        os.remove(f)
 
 
 if __name__ == '__main__':

@@ -23,7 +23,7 @@
         <div class="scroll-container">
             {% for image in images %}
             <div class = "image-item">
-                <img src = "{{ url_for('static', filename=image.filename) }}" alt="Masks Preview">
+                <img src = "{{ url_for('static', filename='scroll/' + image.filename) }}" alt="Masks Preview">
                 <p>Main File: {{ image.stem_file }}</p>
                 <p>Mask Number: {{ image.mask_num }}</p>
             </div>
@@ -74,6 +74,14 @@
 
             </form>
         </div>
+
+        <p>here</p>
+        <div class = "button-container">
+            <form action="/restart" method="POST">
+                <button type="submit">Restart</button>
+            </form>
+        </div>
+
         
     </body>
 </html>
