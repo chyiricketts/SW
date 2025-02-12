@@ -23,6 +23,10 @@ UPLOAD_FOLDER = "static/uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Create the folder if it doesn't exist
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
+SCROLL_FOLDER = "static/scroll"
+os.makedirs(SCROLL_FOLDER, exist_ok=True)
+app.config["SCROLL_FOLDER"] = SCROLL_FOLDER
+
 
 #Clearing all files, called at the beginning of the script
 def clear_uploads():
